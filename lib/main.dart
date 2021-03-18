@@ -1,5 +1,3 @@
-import 'dart:html';
-
 import 'package:flutter/material.dart';
 
 void main() {
@@ -14,8 +12,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.green,
         accentColor: Colors.green,
+        scaffoldBackgroundColor: Colors.blueGrey,
       ),
-      home: MyHomePage(title: 'Flutter Home Page'),
+      home: MyHomePage(title: 'Custom Counter App'),
     );
   }
 }
@@ -42,6 +41,13 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
+        actions: [
+          IconButton(
+            onPressed: _incrementCounter,
+            icon: Icon(Icons.add),
+            tooltip: 'increment couter',
+          )
+        ],
       ),
       body: Center(
         child: Column(
@@ -58,14 +64,30 @@ class _MyHomePageState extends State<MyHomePage> {
               '$_counter',
               style: Theme.of(context).textTheme.headline4,
             ),
+            FlatButton(
+              color: Colors.white,
+              textColor: Colors.teal[700], //when hovered text color change
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(5),
+                side: BorderSide(
+                  color: Colors.teal[700],
+                ),
+              ),
+              onPressed: _incrementCounter,
+              child: Text(
+                "+",
+                style: TextStyle(fontSize: 35),
+              ),
+            ),
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
         hoverColor: Colors.blueAccent,
         onPressed: _incrementCounter,
-        tooltip: 'Increment',
+        tooltip: 'Increment Counter',
         child: Icon(Icons.add),
+        elevation: 15,
       ),
     );
   }
